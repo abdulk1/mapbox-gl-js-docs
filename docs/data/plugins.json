@@ -52,8 +52,8 @@
       "website": "https://github.com/el/style-switcher",
       "description": "Adds a control to switch between styles."
     },
-    "mapboxgl-minimap": {
-      "website": "https://github.com/aesqe/mapboxgl-minimap",
+    "mapbox.minimap": {
+      "website": "https://github.com/abdulk1/mapbox.minimap",
       "description": "Adds a control to show a miniature overview of the current map."
     }
   },
