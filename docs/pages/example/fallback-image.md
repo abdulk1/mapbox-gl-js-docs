@@ -1,6 +1,6 @@
 ---
 title: Use a fallback image
-description: Use a [coalesce](https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/#coalesce) expression to display another image when a requested image is not available.
+description: Use a coalesce expression to display another image when a requested image is not available.
 topics:
   - Layers
 thumbnail: fallback-image
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fallback-image.html';"
+- "import html from './fallback-image.html?code';"
+- "import iframe from './fallback-image.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use a [`coalesce`](/mapbox-gl-js/style-spec/expressions/#coalesce) expression to display another image when a requested image is not available.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

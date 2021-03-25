@@ -1,6 +1,6 @@
 ---
 title: Locate the user
-description: Geolocate the user and then track their current location on the map using the [`GeolocateControl`](/mapbox-gl-js/api/#geolocatecontrol).
+description: Geolocate the user and then track their current location on the map using the GeolocateControl.
 topics:
   - Controls and overlays
 thumbnail: locate-user
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './locate-user.html';"
+- "import html from './locate-user.html?code';"
+- "import iframe from './locate-user.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Geolocate the user and then track their current location on the map using the [`GeolocateControl`](/mapbox-gl-js/api/markers/#geolocatecontrol).
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -1,6 +1,6 @@
 ---
 title: Animate a series of images
-description: Use a series of [image sources](/mapbox-gl-js/style-spec#sources-image) to create an animation.
+description: Use a series of image sources to create an animation.
 topics:
   - Layers
   - Sources
@@ -13,7 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './animate-images.html';"
+- "import html from './animate-images.html?code';"
+- "import iframe from './animate-images.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use a series of [image sources](/mapbox-gl-js/style-spec#sources-image) to create an animation.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

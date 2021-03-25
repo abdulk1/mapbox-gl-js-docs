@@ -1,6 +1,6 @@
 ---
 title: Change building color based on zoom level
-description: Uses the [interpolate expression](/mapbox-gl-js/style-spec#expressions-interpolate) to ease-in the building layer and smoothly fade from one color to the next.
+description: Use the interpolate expression to ease-in the building layer and smoothly fade from one color to the next.
 topics:
   - Layers
 thumbnail: change-building-color-based-on-zoom-level
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './change-building-color-based-on-zoom-level.html';"
+- "import html from './change-building-color-based-on-zoom-level.html?code';"
+- "import iframe from './change-building-color-based-on-zoom-level.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use the [`interpolate` expression](/mapbox-gl-js/style-spec/expressions/#interpolate) to ease-in the building layer and smoothly fade from one color to the next.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

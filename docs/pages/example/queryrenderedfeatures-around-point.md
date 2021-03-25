@@ -1,6 +1,6 @@
 ---
 title: Select features around a clicked point
-description: Click on the map to query features using [`queryRenderedFeatures`](/mapbox-gl-js/api#map#queryrenderedfeatures).
+description: Click on the map to query features using queryRenderedFeatures.
 topics:
   - User interaction
 thumbnail: queryrenderedfeatures-around-point
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './queryrenderedfeatures-around-point.html';"
+- "import html from './queryrenderedfeatures-around-point.html?code';"
+- "import iframe from './queryrenderedfeatures-around-point.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Click on the map to query features using [`queryRenderedFeatures`](/mapbox-gl-js/api/map/#map#queryrenderedfeatures).
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

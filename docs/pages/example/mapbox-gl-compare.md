@@ -1,7 +1,6 @@
 ---
 title: Swipe between maps
-description: >-
-  Use [mapbox-gl-compare](https://github.com/mapbox/mapbox-gl-compare) to swipe between and synchronize two maps.
+description: Use mapbox-gl-compare to swipe between and synchronize two maps.
 topics:
   - Controls and overlays
 thumbnail: mapbox-gl-compare
@@ -13,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-compare.html';"
+- "import html from './mapbox-gl-compare.html?code';"
+- "import iframe from './mapbox-gl-compare.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [mapbox-gl-compare](https://github.com/mapbox/mapbox-gl-compare) to swipe between and synchronize two maps.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -1,6 +1,6 @@
 ---
 title: Attach a popup to a marker instance
-description: Attach a [`Popup`](/mapbox-gl-js/api/#popup) to a [Marker](/mapbox-gl-js/api/#marker) and display it on click.
+description: Attach a popup to a marker and display it on click.
 topics:
   - Controls and overlays
 thumbnail: set-popup
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './set-popup.html';"
+- "import html from './set-popup.html?code';"
+- "import iframe from './set-popup.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Attach a [`Popup`](/mapbox-gl-js/api/markers/#popup) to a [Marker](/mapbox-gl-js/api/markers/#marker) and display it on click.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -1,6 +1,6 @@
 ---
 title: Display map navigation controls
-description: Zoom and rotation controls to make map navigation more obvious.
+description: Add zoom and rotation controls to the map.
 topics:
   - Controls and overlays
 thumbnail: navigation
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './navigation.html';"
+- "import html from './navigation.html?code';"
+- "import iframe from './navigation.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`addControl`](/mapbox-gl-js/api/map/#map#addcontrol) to add zoom and rotation controls to the map.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

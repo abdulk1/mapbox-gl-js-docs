@@ -11,6 +11,7 @@ toc:
     children:
       - accessToken
       - baseApiUrl
+      - workerClass
       - workerCount
       - maxParallelImageRequests
       - supported
@@ -20,6 +21,7 @@ toc:
       - clearStorage
       - AnimationOptions
       - CameraOptions
+      - FreeCameraOptions
       - PaddingOptions
       - RequestParameters
       - StyleImageInterface

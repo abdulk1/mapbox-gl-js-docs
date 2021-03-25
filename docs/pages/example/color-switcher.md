@@ -1,6 +1,6 @@
 ---
 title: Change a layer's color with buttons
-description: Using [`setPaintProperty`](/mapbox-gl-js/api#map#setpaintproperty) to change a layer's fill color.
+description: Use setPaintProperty to change a layer's fill color.
 topics:
   - Layers
   - User interaction
@@ -13,7 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './color-switcher.html';"
+- "import html from './color-switcher.html?code';"
+- "import iframe from './color-switcher.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`setPaintProperty`](/mapbox-gl-js/api/map/#map#setpaintproperty) to change a layer's fill color.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

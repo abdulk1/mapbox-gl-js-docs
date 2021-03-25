@@ -1,8 +1,6 @@
 ---
 title: Localize the geocoder to a given language
-description: >-
-  Localize the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder)
-  to set the UI language and improve result relevance in that language.
+description: Localize the mapbox-gl-geocoder to set the UI language and improve result relevance in that language.
 topics:
   - Geocoder
 thumbnail: mapbox-gl-geocoder-with-language
@@ -15,7 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './mapbox-gl-geocoder-with-language.html';"
+- "import html from './mapbox-gl-geocoder-with-language.html?code';"
+- "import iframe from './mapbox-gl-geocoder-with-language.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Localize the [mapbox-gl-geocoder](https://github.com/mapbox/mapbox-gl-geocoder) to set the UI language and improve result relevance in that language.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

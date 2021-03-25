@@ -1,8 +1,6 @@
 ---
 title: Fit a map to a bounding box
-description: >-
-  Use [`fitBounds`](/mapbox-gl-js/api/#map#fitbounds) to show a specific area
-  of the map in view, regardless of the pixel size of the map.
+description: Fit the map to a specific area, regardless of the pixel size of the map.
 topics:
   - Camera
 thumbnail: fitbounds
@@ -14,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fitbounds.html';"
+- "import html from './fitbounds.html?code';"
+- "import iframe from './fitbounds.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`fitBounds`](/mapbox-gl-js/api/map/#map#fitbounds) to show a specific area of the map in view, regardless of the pixel size of the map.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

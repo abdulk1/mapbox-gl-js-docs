@@ -1,6 +1,6 @@
 ---
 title: Slowly fly to a location
-description: Using [`flyTo`](/mapbox-gl-js/api/#map#flyto) with flyOptions.
+description: Use flyTo with flyOptions to slowly zoom to a location.
 topics:
   - Camera
 thumbnail: flyto-options
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './flyto-options.html';"
+- "import html from './flyto-options.html?code';"
+- "import iframe from './flyto-options.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`flyTo`](/mapbox-gl-js/api/map/#map#flyto) with flyOptions to slowly zoom to a location.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

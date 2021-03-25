@@ -1,6 +1,6 @@
 ---
 title: Add a new layer below labels
-description: 'Using the second argument of [`addLayer`](/mapbox-gl-js/api/#map#addlayer), you can be more precise.'
+description: Use the second argument of addLayer to add a layer below labels.
 topics:
   - Layers
 thumbnail: geojson-layer-in-stack
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './geojson-layer-in-stack.html';"
+- "import html from './geojson-layer-in-stack.html?code';"
+- "import iframe from './geojson-layer-in-stack.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use the second argument of [`addLayer`](/mapbox-gl-js/api/#map#addlayer), you can be more precise when adding a new layer below labels.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

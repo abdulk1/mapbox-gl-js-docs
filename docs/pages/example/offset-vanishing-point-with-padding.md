@@ -1,7 +1,6 @@
 ---
 title: Offset the vanishing point using padding
-description: >-
-  Offset the apparent center or [vanishing point](https://en.wikipedia.org/wiki/Vanishing_point) of the map to reduce distortion when floating elements are displayed over the map.
+description: Offset the center or vanishing point of the map to reduce distortion when floating elements are displayed over the map.
 topics:
   - Camera
 thumbnail: offset-vanishing-point-with-padding
@@ -13,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './offset-vanishing-point-with-padding.html';"
+- "import html from './offset-vanishing-point-with-padding.html?code';"
+- "import iframe from './offset-vanishing-point-with-padding.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Offset the center or [vanishing point](https://en.wikipedia.org/wiki/Vanishing_point) of the map to reduce distortion when floating elements are displayed over the map.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

@@ -1,6 +1,6 @@
 ---
 title: Display a map with a custom style
-description: Using a Mapbox-hosted custom [style](/help/glossary/style/).
+description: Use a Mapbox-hosted custom style in a Mapbox GL JS map.
 topics:
   - Styles
 thumbnail: custom-style-id
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './custom-style-id.html';"
+- "import html from './custom-style-id.html?code';"
+- "import iframe from './custom-style-id.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use a Mapbox-hosted custom [style](/help/glossary/style/) in a Mapbox GL JS map. This example uses a copy of Taya Lavrinenko's [The Happy Map](https://blog.mapbox.com/doh-making-a-simspons-inspired-map-with-expressions-86e633b61ede) style.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

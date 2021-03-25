@@ -1,6 +1,6 @@
 ---
 title: Change a map's language
-description: Using [`setLayoutProperty`](/mapbox-gl-js/api/#map#setlayoutproperty) to switch languages dynamically. For a more complete solution see the [mapbox-gl-language](https://github.com/mapbox/mapbox-gl-language/) plugin.
+description: Use setLayoutProperty to switch languages dynamically.
 topics:
   - User interaction
 thumbnail: language-switch
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './language-switch.html';"
+- "import html from './language-switch.html?code';"
+- "import iframe from './language-switch.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`setLayoutProperty`](/mapbox-gl-js/api/#map#setlayoutproperty) to switch languages dynamically. For a more complete solution see the [mapbox-gl-language](https://github.com/mapbox/mapbox-gl-language/) plugin.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

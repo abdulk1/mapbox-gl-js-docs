@@ -1,6 +1,6 @@
 ---
 title: Adjust a layer's opacity
-description: Drag the range slider to adjust the opacity of a [raster layer](/mapbox-gl-js/style-spec/#layers-raster) on top of a map.
+description: Drag the range slider to adjust the opacity of a raster layer on top of a map.
 topics:
   - Layers
   - User interaction
@@ -13,7 +13,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './adjust-layer-opacity.html';"
+- "import html from './adjust-layer-opacity.html?code';"
+- "import iframe from './adjust-layer-opacity.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Drag the range slider to adjust the opacity of a [raster layer](/mapbox-gl-js/style-spec/#layers-raster) on top of a map.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

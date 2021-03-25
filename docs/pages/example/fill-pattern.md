@@ -1,6 +1,6 @@
 ---
 title: Add a pattern to a polygon
-description: Use [fill-pattern](https://docs.mapbox.com/mapbox-gl-js/style-spec/#paint-fill-fill-pattern) to draw a polygon from a repeating image pattern.
+description: Use fill-pattern to draw a polygon from a repeating image pattern.
 topics:
   - Layers
 thumbnail: fill-pattern
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './fill-pattern.html';"
+- "import html from './fill-pattern.html?code';"
+- "import iframe from './fill-pattern.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Use [`fill-pattern`](/mapbox-gl-js/style-spec/layers/#paint-fill-fill-pattern) to draw a polygon from a repeating image pattern.
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

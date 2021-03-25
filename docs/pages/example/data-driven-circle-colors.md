@@ -1,6 +1,6 @@
 ---
 title: Style circles with a data-driven property
-description: Creating a visualization with a data expression for [`circle-color`](/mapbox-gl-js/style-spec#paint-circle-circle-color).
+description: Create a visualization with a data expression for circle-color.
 topics:
   - Layers
 thumbnail: data-driven-circle-colors
@@ -12,7 +12,10 @@ products:
 - Mapbox GL JS
 prependJs:
 - "import Example from '../../components/example';"
-- "import html from './data-driven-circle-colors.html';"
+- "import html from './data-driven-circle-colors.html?code';"
+- "import iframe from './data-driven-circle-colors.html?iframe';"
 ---
 
-{{ <Example html={html} {...this.props} /> }}
+Create a visualization with a data expression for [`circle-color`](/mapbox-gl-js/style-spec/layers/#paint-circle-circle-color).
+
+{{ <Example html={html} iframeSrc={iframe} {...this.props} /> }}

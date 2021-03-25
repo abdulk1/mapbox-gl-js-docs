@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const mapboxAssembly = require('@mapbox/mbx-assembly');
 const path = require('path');
+const posthtml = require('posthtml');
 const apiNavigation = require('./docs/data/api-navigation');
 const { buildApiSearch } = require('./docs/util/build-api-search');
 const {
@@ -8,10 +9,27 @@ const {
 } = require('@mapbox/remark-lint-mapbox/frontmatter/mbx-tagger-batfish');
 const {
     buildNavigation,
-    buildTopics
+    buildFilters
 } = require('@mapbox/dr-ui/helpers/batfish/index.js');
-const pluginTopics = require('./docs/data/build-plugin-topics');
-const topicsOrder = require('./docs/data/topics.json');
+const {
+    renderIframe,
+    renderCopiableCode
+} = require('./docs/components/example-utils.js');
+const { productionToken } = require('./scripts/mapbox-shell-token.js');
+
+const addPages = [
+    {
+        title: 'Tutorials',
+        path: 'https://docs.mapbox.com/help/tutorials?product=Mapbox+GL+JS',
+        navOrder: 5
+    },
+    {
+        title: 'Troubleshooting',
+        path:
+            'https://docs.mapbox.com/help/troubleshooting?product=Mapbox+GL+JS',
+        navOrder: 6
+    }
+];
 
 const siteBasePath = '/mapbox-gl-js';
 module.exports = () => {
@@ -20,7 +38,6 @@ module.exports = () => {
         siteOrigin: 'https://docs.mapbox.com',
         pagesDirectory: `${__dirname}/docs/pages`,
         outputDirectory: path.join(__dirname, '_site'),
-        browserslist: mapboxAssembly.browsersList,
         postcssPlugins: mapboxAssembly.postcssPipeline.plugins,
         productionDevtool: 'source-map',
         stylesheets: [
@@ -32,10 +49,76 @@ module.exports = () => {
         ],
         applicationWrapperPath: `${__dirname}/docs/components/application-wrapper.js`,
         webpackLoaders: [
-            // Use raw loader to get the HTML string contents of examples
+            /* 
+            This loader is responsible for generating:
+              1. The copiable code for each example. 
+              2. The iframe demo for each code example.
+            */
             {
                 test: /\.html$/,
-                use: 'raw-loader'
+                oneOf: [
+                    /* generates the example's copiable code  */
+                    {
+                        resourceQuery: /code/, // example: simple-map.html?code
+                        use: [
+                            {
+                                loader: 'html-loader',
+                                options: {
+                                    minimize: false,
+                                    preprocessor: (content, loaderContext) => {
+                                        let result;
+                                        try {
+                                            result = posthtml().process(
+                                                renderCopiableCode(content),
+                                                { sync: true }
+                                            );
+                                        } catch (error) {
+                                            loaderContext.emitError(error);
+                                            return content;
+                                        }
+                                        return result.html;
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    /* generates the example's iframe demo */
+                    {
+                        resourceQuery: /iframe/, // example: simple-map.html?iframe
+                        use: [
+                            // name the iframe file
+                            'file-loader?name=[name]-demo.[ext]',
+                            'extract-loader',
+                            // wrap the html snippet in HTML document and add Mapbox token
+                            {
+                                loader: 'html-loader',
+                                options: {
+                                    minimize: true,
+                                    preprocessor: (content, loaderContext) => {
+                                        let result;
+                                        try {
+                                            result = posthtml().process(
+                                                renderIframe(
+                                                    content,
+                                                    productionToken
+                                                ),
+                                                { sync: true }
+                                            );
+                                        } catch (error) {
+                                            loaderContext.emitError(error);
+                                            return content;
+                                        }
+                                        return result.html;
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                test: /@mapbox\/mapbox-gl-style-spec\/expression\/definitions\/index.js$/,
+                sideEffects: true
             }
         ],
         ignoreWithinPagesDirectory: ['example/*.html'],
@@ -59,7 +142,6 @@ module.exports = () => {
                 require('rehype-slug'),
                 require('@mapbox/rehype-prism'),
                 require('@mapbox/dr-ui/plugins/add-links-to-headings'),
-                require('@mapbox/dr-ui/plugins/create-sections'),
                 require('@mapbox/dr-ui/plugins/make-table-scroll')
             ]
         },
@@ -68,30 +150,23 @@ module.exports = () => {
             mbxMeta: (data) => mbxTaggerBatfish(data),
             apiSearch: () => buildApiSearch(),
             apiNavigation: () => apiNavigation,
-            navigation: (data) => buildNavigation(siteBasePath, data),
-            topics: (data) =>
-                buildTopics(
-                    data,
-                    {
-                        // append plugin topics
-                        '/mapbox-gl-js/plugins/': { topics: pluginTopics }
-                    },
-                    // order of topics on examples page
-                    topicsOrder
-                )
+            navigation: (data) =>
+                buildNavigation({ siteBasePath, data, addPages }),
+            filters: (data) => buildFilters(data)
         },
-        devBrowserslist: false,
+        includePromisePolyfill: false,
         babelInclude: [
-            'documentation',
-            '@mapbox/mapbox-gl-style-spec',
-            'fuse.js'
+            '@mapbox/mapbox-gl-style-spec' // (removes flow)
         ],
-        webpackStaticIgnore: [/util\/util\.js$/]
+        webpackStaticIgnore: [/util\/util\.js$/],
+        sitemap: {
+            ignoreFile: 'conf/sitemap-ignore.js'
+        }
     };
 
     // Local builds treat the `dist` directory as static assets, allowing you to test examples against the
     // local branch build. Non-local builds ignore the `dist` directory, and examples load assets from the CDN.
-    config.unprocessedPageFiles = ['**/dist/**/*.*'];
+    config.unprocessedPageFiles = ['**/dist/**/*.*', '**/assets/*.js'];
     if (process.env.DEPLOY_ENV !== 'local') {
         config.ignoreWithinPagesDirectory.push('**/dist/**/*.*');
     }
